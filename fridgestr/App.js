@@ -1,13 +1,29 @@
 import React from "react";
+
+//Components
 import { StyleSheet, Text, View } from "react-native";
+import LoginForm from "./components/login/LoginForm";
+
+//Firebase
+import { apiKey, authDomain, databaseURL, projectId, storageBucket, messagingSenderId } from "react-native-dotenv";
+import firebase from "firebase";
 
 export default class App extends React.Component {
+  componentDidMount() {
+    firebase.initializeApp({
+      apiKey,
+      authDomain,
+      databaseURL,
+      projectId,
+      storageBucket,
+      messagingSenderId
+    });
+  }
+
   render() {
     return (
       <View style={styles.container}>
-        <Text>Open up App.js to start working on your app!</Text>
-        <Text>Changes you make will automatically reload.</Text>
-        <Text>Shake your phone to open the developer menu.</Text>
+        <LoginForm />
       </View>
     );
   }
